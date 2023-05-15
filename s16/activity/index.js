@@ -63,7 +63,7 @@
     let remainder1 = num7 % 8;
     let isDivisibleBy8 = (remainder1 == 0)
     console.log("Is num7 divisible by 8?: ")
-    console.log(isDivisible8);
+    console.log(isDivisibleBy8);
 
 /*
 	4b. Given the values below, identify if the values of the following variable are divisible by 4.
@@ -83,7 +83,7 @@
 
     let remainder2 = num8 % 4;
     let isDivisibleBy4 = (remainder1 == 0)
-    console.log("Is num7 divisible by 8?: ")
+    console.log("Is num7 divisible by 4?: ")
     console.log(isDivisible4);
 
 	//Do not modify
