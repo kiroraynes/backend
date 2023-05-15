@@ -43,7 +43,7 @@
 */
 	let tempCelsius = 132;
     let resultFahrenheit = (tempCelsius * 9 / 5) + 32;
-    console.log(" " + resultFahrenheit);
+    console.log("132 degrees celsius when converted to Farenheit is " + resultFahrenheit);
 /*
 	4a. Given the values below, identify if the values of the following variable are divisible by 8.
 	   -Use a modulo operator to identify the divisibility of the number to 8.
