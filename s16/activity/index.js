@@ -7,7 +7,7 @@
 */
 
 	let num1 = 25;
-	let num2 = "5";
+	let num2 = 5;
 	console.log("The result of num1 + num2 should be 30.");
 	console.log("Actual Result:");
 	console.log(num1 + num2);
@@ -43,7 +43,7 @@
 */
 	let tempCelsius = 132;
     let resultFahrenheit = (tempCelsius * 9 / 5) + 32;
-    console.log(resultFahrenheit);
+    console.log(" " + resultFahrenheit);
 /*
 	4a. Given the values below, identify if the values of the following variable are divisible by 8.
 	   -Use a modulo operator to identify the divisibility of the number to 8.
@@ -62,7 +62,6 @@
 
     let remainder1 = num7 % 8;
     let isDivisibleBy8 = (remainder1 == 0)
-    console.log("Is num7 divisible by 8?: ")
     console.log(isDivisibleBy8);
 
 /*
@@ -83,8 +82,7 @@
 
     let remainder2 = num8 % 4;
     let isDivisibleBy4 = (remainder1 == 0)
-    console.log("Is num7 divisible by 4?: ")
-    console.log(isDivisible4);
+    console.log(isDivisibleBy4);
 
 	//Do not modify
 	//For exporting to test.js
