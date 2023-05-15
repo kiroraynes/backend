@@ -54,7 +54,7 @@ console.log("I work at: " + workAddress)
 	let fullName = "Steve Rogers";
 	console.log("My full name is " + fullName); /* undeclared name instead of fullName' */
 
-	let currentAge = 70; /* never use boolean to determine age unless for comparison */
+	let currentAge = 40; /* never use boolean to determine age unless for comparison */
 	console.log("My current age is: " + currentAge); /*wrong spelling of variable*/
 	
 	let friends = ["Tony","Bruce","Thor","Natasha","Clint","Nick"]; /*inconsitency is separaing and quoting elements*/
