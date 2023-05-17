@@ -3,7 +3,7 @@ function test(a,b,c){
     console.log(a,b,c);
 }
 function login(username ,password, role){
-    if (!(username == "" || username) || !(password == "" || password) || !(role == "" || role)){
+    if (!username || !password || !role){
         return "Inputs must not be empty";
     }
     else{
