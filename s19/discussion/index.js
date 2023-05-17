@@ -40,7 +40,7 @@ let numA= -1;
 		console.log('World')
 	}
 
-	function typhoonIntensity(windspeed){
+	function determineTyphoonIntensity(windspeed){
 		if (windspeed < 0){
 			return "Invalid wind speed";
 		}
@@ -67,7 +67,7 @@ let numA= -1;
 		}
 	}
 
-
+// Switch case syntax
 
 let day = prompt("What day is it today?").toLowercase();
 
@@ -75,4 +75,29 @@ switch(day){
 	case 'monday':
 		console.log("the color of the day is red!")
 		break;
+
+	default:
+		console.log("Invalid input")
+
 }
+
+// [Section] try - catch - finally
+
+function showIntensityAlert(windspeed){
+	try{
+		alert(determineTyphoonIntensity(windspeed))p
+	}
+	// the catch will only run if and only if there was an error in the statement insidie our try.
+	catch(error){
+		console.warn(error.message);
+	}
+
+	finally{
+		// continue execution of code regardless of success and failure of code execution in the try block.
+		alert("Intensity updates will show new alert!");
+	}
+}
+
+showIntensityAlert(30);
+
+console.log("Hi im after the showIntensityAlert");
