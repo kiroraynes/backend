@@ -3,7 +3,7 @@ function test(a,b,c){
     console.log(a,b,c);
 }
 function login(username ,password, role){
-    if (!(username == "" || username == undefined) || !(password == "" || password == undefined) || !(role == "" || role == undefined)){
+    if (!(username == "" || username) || !(password == "" || password) || !(role == "" || role)){
         return "Inputs must not be empty";
     }
     else{
@@ -39,13 +39,13 @@ function checkAverage(a,b,c,d){
     else if ( average >= 75 && average <= 79){
         return 'Hello, student, your average is ' + average + '. The letter equivalent is D'
     }
-    else if(average>=80){
+    else if(average>=80 && average <= 84){
         return 'Hello, student, your average is ' + average + '. The letter equivalent is C'
     }
-    else if (average >= 85){
+    else if (average >= 85 && average <= 89){
         return 'Hello, student, your average is ' + average + '. The letter equivalent is B'
     }
-    else if (average >= 90){
+    else if (average >= 90 && average <= 95){
         return 'Hello, student, your average is ' + average + '. The letter equivalent is A'
     }
     else if (average >= 96){
