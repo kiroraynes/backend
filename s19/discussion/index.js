@@ -66,3 +66,13 @@ let numA= -1;
 			return "Category 5"
 		}
 	}
+
+
+
+let day = prompt("What day is it today?").toLowercase();
+
+switch(day){
+	case 'monday':
+		console.log("the color of the day is red!")
+		break;
+}
