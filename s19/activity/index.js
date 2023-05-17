@@ -1,7 +1,9 @@
 // console.log("hello world")
-
+function test(a,b,c){
+    console.log(a,b,c);
+}
 function login(username ,password, role){
-    if (username == null || password == null || role == null){
+    if (!username || !password || !role){
         return "Inputs must not be empty";
     }
     else{
@@ -58,5 +60,5 @@ try {
         checkAverage: typeof checkAverage !== 'undefined' ? checkAverage :null
     }
 } catch(err){
-    
+
 }
