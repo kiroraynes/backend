@@ -3,7 +3,7 @@ function test(a,b,c){
     console.log(a,b,c);
 }
 function login(username ,password, role){
-    if (!(username == '' || username == undefined) || !(password == '' || password == undefined) || !(role == '' || role == undefined)){
+    if (!(username == "" || username == undefined) || !(password == "" || password == undefined) || !(role == "" || role == undefined)){
         return "Inputs must not be empty";
     }
     else{
@@ -29,7 +29,7 @@ function login(username ,password, role){
 
 function checkAverage(a,b,c,d){
     arr = [a,b,c,d]
-    average = ((a + b + c + d)/arr.filter(undefined).length);
+    average = (a + b + c + d)/4;
     average = Math.round(average);
     console.log(average);
 
