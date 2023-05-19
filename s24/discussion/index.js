@@ -85,7 +85,7 @@
 	// [Section] implicit return in Arrow function
 		// example:
 		// if the function will run one line or one statement the arrow function will implicitly return the value
-			const add = (x,y) => x+y /* {x+y} will not return anything automatically*/;
+			const add = (x,y) => x+y; /* {x+y} will not return anything automatically*/
 			let total = add(10,12)
 
 			console.log(total);
