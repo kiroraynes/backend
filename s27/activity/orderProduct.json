@@ -1,0 +1,17 @@
+{
+	"orderProductID" : 1,
+	"orderID" : 1,
+	"productID" : 1,
+	"quantity" : 5,
+	"price" : 50,
+	"subTotal" : 250
+}
+
+{
+	"orderProductID" : 2,
+	"orderID" : 1,
+	"productID" : 2,
+	"quantity" : 5,
+	"price" : 20,
+	"subTotal" : 100
+}

@@ -1,0 +1,19 @@
+{
+	"productID" : 1,
+	"name" : "apple",
+	"description" : "Fresh Fuji Apples",
+	"price" : 50,
+	"stocks" : 45,
+	"isActive" : true,
+	"SKU" : 10678791284
+}
+
+{
+	"productID" : 2,
+	"name" : "orange",
+	"description" : "Fresh oranges",
+	"price" : 20,
+	"stocks" : 30,
+	"isActive" : true,
+	"SKU" : 10678758435
+}

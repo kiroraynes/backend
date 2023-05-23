@@ -1,0 +1,9 @@
+{
+	"userID" : 1,
+	"firstName" : "Kirt",
+	"lastName" : "Raynes",
+	"email" : "rayneskirt@gmail.com",
+	"password" : "5643582346983746",
+	"isAdmin" : false,
+	"mobileNumber" : 09222555100
+}
