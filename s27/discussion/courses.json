@@ -1,0 +1,21 @@
+{
+	"courseID" : 1,
+	"name" : "Intro to HTML",
+	"price" : 9999,
+	"description" : "In here, you will learn the basics of HTML!",
+	"slots" : 30,
+	"isActive" : true,
+	"enrollees" : [{
+		"userID" : 1
+	}]
+}
+
+{ 
+	"courseID" : 2,
+	"name" : "Intro to JavaScript",
+	"price" : 999,
+	"description" : "In here you will learn the basics of JavaScript.",
+	"slots" : 30,
+	"isActive" : true,
+	"enrollees" : []
+}

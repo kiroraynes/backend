@@ -1,0 +1,12 @@
+{
+	"userID" : 1,
+	"firstName" : "Chris",
+	"lastName" : "Mortel",
+	"email" : "chrismortel@gmail.com",
+	"password" : "15363272377346",
+	"isAdmin" : false,
+	"enrollments" : [{
+		"courseID" : 1
+	}],
+
+}

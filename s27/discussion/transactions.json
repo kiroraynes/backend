@@ -1,0 +1,17 @@
+{
+	"transactionID" : 1,
+	"courseID" : 1,
+	"userID" : 1,
+	"isPaid" : true,
+	"date" : "05/23/2023",
+	"paymentScheme" : "cashG"
+}
+
+{
+	"transactionID" : 2,
+	"courseID" : 2,
+	"userID" : 1,
+	"isPaid" : false,
+	"date" : "05/23/2023",
+	"paymentScheme" : "SNPL"
+}
