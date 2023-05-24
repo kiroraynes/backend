@@ -155,8 +155,11 @@ db.users.find(
 		allow us to find documents that match a specific string pattern using regular expression,.
 		- syntax:
 		db.users.find({
-			field: $regex: 'pattern', option: 'optionValue'
+			field: $regex: 'pattern', options: 'optionValue'
 		})
 	*/
 
-db.users.find({firstName: { $regex: 'N'}}):
+db.users.find({firstName: { $regex: 'N'}}); // case sensitive
+
+// case insensitive
+db.users.find({firstName: { $regex: 'n', $options : 'i'}});
