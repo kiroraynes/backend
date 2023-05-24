@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "646d3b37ebdef778d3a4a450"
+  },
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "age": 21,
+  "contact": {
+    "phone": "87654321",
+    "email": "janedoe@gmail.com"
+  },
+  "courses": [
+    "CSS",
+    "Javascript",
+    "Python"
+  ],
+  "department": "none"
+},{
+  "_id": {
+    "$oid": "646d3b42ebdef778d3a4a451"
+  },
+  "firstName": "Stephen",
+  "lastName": "Hawking",
+  "age": 76,
+  "contact": {
+    "phone": "87654321",
+    "email": "stephenhawking@gmail.com"
+  },
+  "courses": [
+    "Python",
+    "React",
+    "PHP"
+  ],
+  "department": "none"
+},{
+  "_id": {
+    "$oid": "646d3b42ebdef778d3a4a452"
+  },
+  "firstName": "Neil",
+  "lastName": "Armstrong",
+  "age": 82,
+  "contact": {
+    "phone": "87654321",
+    "email": "neilarmstrong@gmail.com"
+  },
+  "courses": [
+    "React",
+    "Laravel",
+    "Sass"
+  ],
+  "department": "none"
+}]
