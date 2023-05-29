@@ -29,13 +29,13 @@ const port = 3000;
 
 const server = http.createServer((request, response)=> {
 	if (request.url == '/login'){
-		request.writeHead(200, {'Content-Type': 'text/plain '});
-		request.end('Welcome to the login page');
+		response.writeHead(200, {'Content-Type': 'text/plain '});
+		response.end('Welcome to the login page');
 	} else {
-		request.writeHead(200, {'Content-Type': 'text/plain '});
-		request.end('Page not found');
+		response.writeHead(200, {'Content-Type': 'text/plain '});
+		response.end('Page not found');
 	}
 });
 
-
+server.listen(port)
 console.log(`Server is now accessible at localhost: ${port}.`);
