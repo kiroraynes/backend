@@ -13,7 +13,7 @@ const port = 8080;
     // BY defauly, information received from the url can only be received as a string or an array.
     app.use(express.urlencoded({extended: true})); // by applying the option of 'extended  : true' this will allow us to receive information in other data types such as an objectwhich will use throughout our application.
 
-    app.listen(port, () => console.log(`Server running at ${port}`))
+    
     // This route expets to receive a GET request at the URI "/hello"
     app.get("/", (request, response) => {
         response.send("Hello World!");
@@ -57,3 +57,11 @@ const port = 8080;
         }
         response.send(message);
     })
+
+    
+
+if(require.main === module){
+    app.listen(port, () => console.log(`Server running at ${port}`));
+}
+
+module.exports = app;
