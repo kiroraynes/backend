@@ -11,7 +11,7 @@ const app = http.createServer((request,response) => {
 		response.end("Here's our courses available");
 	} else if (request.url == '/addcourse') {
 		response.writeHead(200,{'Content-Type': 'text/plain'});
-		response.end("Add a course to our resoureces");
+		response.end("Add a course to our resources");
 	} else if (request.url == '/updatecourse') {
 		response.writeHead(200,{'Content-Type': 'text/plain'});
 		response.end("Update a course to our resources");
