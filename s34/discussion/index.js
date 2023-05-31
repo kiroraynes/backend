@@ -58,8 +58,34 @@ const port = 8080;
         response.send(message);
     })
 
-    
+    app.get("/home", (request, response) => {
+        response.send("Welcome to the home page");
 
+    });
+
+    app.get("/users", (request, response) => {
+        response.send(users);
+
+    });
+
+    app.delete("/delete-user", (request, response) => {
+        console.log(request.body.username)
+        let message;
+        for (let index =0; index < users.length; index++){
+            if(request.body.username == users[index].username){
+                users.splice(index,1);
+                message = `User ${request.body.username} has been deleted!`
+                break;
+            }
+        }
+        if (message) {
+            response.send(message);
+        } else {
+            response.send('No users found.')
+        }
+    });
+
+    
 if(require.main === module){
     app.listen(port, () => console.log(`Server running at ${port}`));
 }
