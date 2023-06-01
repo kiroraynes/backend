@@ -31,3 +31,20 @@ module.exports.deleteTask = (request, response) => {
 		return response.send(`The document that has the _id of ${request.params.id} has been deleted`);
 	}).catch(error => response.send(error))
 }
+
+module.exports.showTask = (request, response) => {
+	Task.findById(request.params.id)
+	.then(result => response.send(result))
+}
+module.exports.completeTask = (request, response) => {
+	Task.findById(request.params.id)
+	.then(result =>{
+		if (result.status == 'completed') {
+			return response.send("Task already completed")
+		} else {
+			Task.findByIdAndUpdate(request.params.id, {status: 'completed'}).then(result => {
+			return response.send(`Task ${request.params.id} has been updated`);
+			}).catch(error => response.send(error))
+		}
+	})
+}

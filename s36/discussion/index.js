@@ -17,7 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use("/tasks", taskRoutes)
 
-
-app.listen(port, () => {
+if(require.main===module){
+	app.listen(port, () => {
 	console.log(`Server is running at localhost:${port}`)
 });
+}
+
+module.exports = app;
+
+
