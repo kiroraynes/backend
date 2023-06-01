@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const userRoutes = require("./routes/usersRoutes.js")
 
 // It will allow our backend applications to be available to our frontend application
 const cors = require('cors');
@@ -24,6 +25,8 @@ app.use(express.urlencoded({extended:true}));
 
 // Reminder  that we are going to use this for the sake of the bootcamp
 app.use(cors());
+
+app.use("/users", userRoutes);
 
 
 app.listen(port, () => {
