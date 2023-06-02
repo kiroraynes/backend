@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const userRoutes = require("./routes/usersRoutes.js")
-
+const userRoutes = require("./routes/usersRoutes.js");
+const coursesRoutes = require("./routes/coursesRoutes.js");
 // It will allow our backend applications to be available to our frontend application
 const cors = require('cors');
 
@@ -27,6 +27,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
 app.use("/users", userRoutes);
+app.use("/courses", coursesRoutes);
 
 
 app.listen(port, () => {

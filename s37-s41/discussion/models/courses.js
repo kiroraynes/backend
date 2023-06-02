@@ -16,11 +16,10 @@ const coursesSchema = new mongoose.Schema({
 	createdOn:{
 		type: Date,
 	default: new Date()
-	}
-
+	},
 	slots: {
 		type: Number,
-		required: [true, "Cours slots is required!"]
+		required: [true, "Course slots is required!"]
 	},
 
 	enrollees: [
@@ -40,6 +39,6 @@ const coursesSchema = new mongoose.Schema({
 
 // We are now going to create the model
 
-const Courses = mongoose.model("Course", courseSchema);
+const Courses = mongoose.model("Courses", coursesSchema);
 
 module.exports = Courses;

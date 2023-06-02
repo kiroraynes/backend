@@ -27,4 +27,37 @@ module.exports.createAccessToken = (user) => {
 	return jwt.sign(data, secret, {});
 }
 
+// Token verification
+/*
+	Analogy:
+		Receive gift and open the lock to verify if the sender is legitimate and the gift was not tampered
+*/
+module.exports.verify = (request, response, next) => {
+	let token = request.headers.authorization;
+
+	if (token) {
+		token = token.slice(7,token.length);
+
+		// validate the token using the "verify" method in decrypting the token using the secret code.
+		return jwt.verify(token,secret, (error,data) =>{
+			if(error){
+				return response.send("Auth failed!")
+			} else {
+				next();
+			}
+		})
+	} else {
+		return response.send("No token provided");
+	}
+}
+
+module.exports.decode = (token) => {
+	token = token.slice(7,token.length);
+
+	// The decode method is used to obtain the information from the JWT
+	// The {complete: true} option allows us to return additional informatio nfrom the JWT token.
+
+	return jwt.decode(token,{complete:true}).payload;
+}
+
 

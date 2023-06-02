@@ -54,13 +54,23 @@ module.exports.loginUser = (request, response) => {
 }
 
 module.exports.getProfile = (request, response) => {
-	User.findById(request.body.id)
-	.then(result => {
+
+	const userData = auth.decode(request.headers.authorization)
+	// console.log(userData)
+
+	if (userData.isAdmin) {
+		User.findById(request.body.id)
+		.then(result => {
 			if (result){
 				result.password = "*".repeat(result.password.length)
 				return response.send(result)
 			} else {
 				return response.send("User not found.")
 			}
-	})
+		})
+	} else {
+		return response.send(`You are not an admin, you don't have access to this route.`)
+	}
+
+	
 }
