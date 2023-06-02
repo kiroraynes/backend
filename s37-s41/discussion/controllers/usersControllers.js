@@ -1,6 +1,6 @@
 const User = require('../models/user.js');
 const bcrypt = require("bcrypt");
-
+const auth = require("../auth.js")
 // 
 
 // Create a controller for the signup
@@ -43,10 +43,24 @@ module.exports.loginUser = (request, response) => {
 		} else {
 			const isPasswordCorrect = bcrypt.compareSync(request.body.password, result.password);
 			if (isPasswordCorrect){
-				return response.send("Login successful!");
+				return response.send({
+					auth: auth.createAccessToken(result)
+				})
 			} else {
 				return response.send("Please check your password");
 			}
 		}
 	}).catch(error => response.send(error));
+}
+
+module.exports.getProfile = (request, response) => {
+	User.findById(request.body.id)
+	.then(result => {
+			if (result){
+				result.password = "*".repeat(result.password.length)
+				return response.send(result)
+			} else {
+				return response.send("User not found.")
+			}
+	})
 }
