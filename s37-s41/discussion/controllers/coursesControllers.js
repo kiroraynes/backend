@@ -81,3 +81,14 @@ module.exports.archiveCourse = (request,response) => {
 		return response.send(`You don't have authorization to update this.`)
 	}
 }
+
+module.exports.getInactiveCourses = (request, response) => {
+	const userData = auth.decode(request.headers.authorization);
+	if(userData.isAdmin){
+		Courses.find({isActive:false})
+		.then(result => response.send(result))
+		.catch(error => response.send(error))
+	} else {
+		return response.send("You don't have access to this route.")
+	}
+}

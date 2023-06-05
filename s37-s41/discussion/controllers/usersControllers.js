@@ -1,4 +1,5 @@
 const User = require('../models/user.js');
+const Courses = require("../models/Courses.js");
 const bcrypt = require("bcrypt");
 const auth = require("../auth.js")
 // 
@@ -71,6 +72,44 @@ module.exports.getProfile = (request, response) => {
 	} else {
 		return response.send(`You are not an admin, you don't have access to this route.`)
 	}
+}
 
-	
+module.exports.enrollCourse = async (request,response) => {
+
+	const courseId = request.body.id;
+	const userData = auth.decode(request.headers.authorization);
+
+	if(userData.isAdmin){
+		return response.send("Admin cannot enroll a course")
+	} else {
+		// push to user doc
+		let isUserUpdated = User.findOne({_id: userData.id})
+		.then(result => {
+			result.enrollments.push({
+				courseId: courseId
+			})
+			result.save()
+			.then(saved => true)
+			.catch(erro => false)
+		})
+		.catch(error => false)
+
+		let isCourseUpdated = Courses.findOne({_id : courseId})
+		.then(result => {
+			result.enrollees.push({
+				userId: userData.id
+			})
+
+			result.save()
+			.then(saved => true)
+			.catch(error => false)
+		}).catch(error => false)
+
+		if(isUserUpdated && isCourseUpdated){
+			return response.send('Enrollment is successful.')
+		} else {
+			return response.send('There was an error in the enrollment please try again!')
+		}
+	}
+
 }

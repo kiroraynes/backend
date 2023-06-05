@@ -6,6 +6,10 @@ const auth = require('../auth.js');
 router.post('/addCourse', auth.verify, coursesControllers.addCourse);
 router.get('/', auth.verify, coursesControllers.getAllCourses)
 router.get('/activeCourses', coursesControllers.getActiveCourses)
+
+// Route for inactive courses
+router.get('/inactiveCourses', auth.verify, coursesControllers.getInactiveCourses);
+// always put no params above with params
 // Route for getting the specific course information
 router.get('/:courseId', coursesControllers.getCourse);
 
@@ -13,6 +17,8 @@ router.get('/:courseId', coursesControllers.getCourse);
 router.patch('/:courseId', auth.verify, coursesControllers.updateCourse);
 // for archiving
 router.put('/:courseId',auth.verify,coursesControllers.archiveCourse)
+
+
 
 module.exports = router;
 
