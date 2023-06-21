@@ -41,13 +41,13 @@ module.exports.verify = (request, response, next) => {
 		// validate the token using the "verify" method in decrypting the token using the secret code.
 		return jwt.verify(token,secret, (error,data) =>{
 			if(error){
-				return response.send("Auth failed!")
+				return response.send(false)
 			} else {
 				next();
 			}
 		})
 	} else {
-		return response.send("No token provided");
+		return response.send(false);
 	}
 }
 

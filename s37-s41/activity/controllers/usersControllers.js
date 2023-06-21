@@ -18,7 +18,7 @@ module.exports.registerUser = (request,response) => {
 	User.findOne({email : request.body.email})
 	.then(result => {
 		if(result){
-			response.send(`${request.body.email} is already taken. Try logging in or use a different email to sign up.`)
+			response.send(false)
 		} else {
 			let newUser = new User({
 				firstName: request.body.firstName,
@@ -30,28 +30,29 @@ module.exports.registerUser = (request,response) => {
 				isAdmin: request.body.isAdmin,
 				mobileNo: request.body.mobileNo
 			});
-			newUser.save().then(saved => response.send(`${request.body.email} is now registered.`)).catch(error => response.send(error))
+			newUser.save()
+			.then(saved => response.send(true))
+			.catch(error => response.send(false))
 		}
-	}).catch(error => response.send(error))
+	}).catch(error => response.send(false));
 }
+
 
 // new controller for the authentication of the user
 module.exports.loginUser = (request, response) => {
 	User.findOne({email : request.body.email})
 	.then(result => {
 		if (!result) {
-			return response.send(`${request.body.email} is not yet registered`)
+			return response.send(false)
 		} else {
 			const isPasswordCorrect = bcrypt.compareSync(request.body.password, result.password);
 			if (isPasswordCorrect){
-				return response.send({
-					auth: auth.createAccessToken(result)
-				})
+				return response.send({auth : auth.createAccessToken(result)})
 			} else {
-				return response.send("Please check your password");
+				return response.send(false);
 			}
 		}
-	}).catch(error => response.send(error));
+	}).catch(error => response.send(false));
 }
 
 module.exports.getProfile = (request, response) => {
@@ -66,11 +67,11 @@ module.exports.getProfile = (request, response) => {
 				result.password = "*".repeat(result.password.length)
 				return response.send(result)
 			} else {
-				return response.send("User not found.")
+				return response.send(false)
 			}
 		})
 	} else {
-		return response.send(`You are not an admin, you don't have access to this route.`)
+		return response.send(false)
 	}
 }
 
@@ -80,7 +81,7 @@ module.exports.enrollCourse = async (request,response) => {
 	const userData = auth.decode(request.headers.authorization);
 
 	if(userData.isAdmin){
-		return response.send("Admin cannot enroll a course")
+		return response.send(false)
 	} else {
 		// push to user doc
 		let isUserUpdated = User.findOne({_id: userData.id})
@@ -90,7 +91,7 @@ module.exports.enrollCourse = async (request,response) => {
 			})
 			result.save()
 			.then(saved => true)
-			.catch(erro => false)
+			.catch(error => false)
 		})
 		.catch(error => false)
 
@@ -99,6 +100,7 @@ module.exports.enrollCourse = async (request,response) => {
 			result.enrollees.push({
 				userId: userData.id
 			})
+			result.slots -= 1
 
 			result.save()
 			.then(saved => true)
@@ -106,10 +108,16 @@ module.exports.enrollCourse = async (request,response) => {
 		}).catch(error => false)
 
 		if(isUserUpdated && isCourseUpdated){
-			return response.send('Enrollment is successful.')
+			return response.send(true)
 		} else {
-			return response.send('There was an error in the enrollment please try again!')
+			return response.send(false)
 		}
 	}
 
+}
+
+module.exports.retrieveUserDetails = (request, response) => {
+	const userData = auth.decode(request.headers.authorization);
+	User.findOne({_id : userData.id})
+	.then(data => response.send(data))
 }

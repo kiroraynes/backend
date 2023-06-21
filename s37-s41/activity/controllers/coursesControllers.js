@@ -13,10 +13,10 @@ module.exports.addCourse = (request, response) => {
 			slots: request.body.slots
 		})
 		newCourse.save()
-		.then(saved => response.send('Course successfully created.'))
-		.catch(error => response.send(error));
+		.then(saved => response.send(true))
+		.catch(error => response.send(false));
 	} else {
-		return response.send('You are not authorized to create a course.')
+		return response.send(false)
 	}
 }
 
@@ -25,9 +25,9 @@ module.exports.getAllCourses = (request, response) => {
 	if (courseData.isAdmin) {
 		Courses.find({})
 		.then(result => response.send(result))
-		.catch(error => response.send(error));
+		.catch(error => response.send(false));
 	} else {
-		response.send("You don't have access to this route.")
+		return response.send(false)
 	}
 	
 }
@@ -35,7 +35,7 @@ module.exports.getAllCourses = (request, response) => {
 module.exports.getActiveCourses = (request,response) => {
 	Courses.find({isActive: true})
 	.then(result => response.send(result))
-	.catch(error => response.send(error));
+	.catch(error => response.send(false));
 }
 
 // Controller will retrieve the information of a single document using provided params.
@@ -44,7 +44,7 @@ module.exports.getCourse = (request, response) => {
 	const courseId = request.params.courseId;
 	Courses.findById(courseId)
 	.then(result => response.send(result))
-	.catch(error => response.send(error))
+	.catch(error => response.send(false))
 }
 
 module.exports.updateCourse = (request, response) => {
@@ -61,10 +61,10 @@ module.exports.updateCourse = (request, response) => {
 
 	if(courseData.isAdmin){
 		Courses.findByIdAndUpdate(courseId,updatedCourse)
-		.then(result => response.send('successfully updated!'))
-		.catch(error => response.send(error))
+		.then(result => response.send(true))
+		.catch(error => response.send(false))
 	}else{
-		return response.send(`You don't hjave access in this route!`)
+		return response.send(false)
 	}
 }
 
@@ -75,10 +75,10 @@ module.exports.archiveCourse = (request,response) => {
 
 	if(courseData.isAdmin){
 		Courses.findByIdAndUpdate(courseId,{isActive: request.body.isActive})
-		.then(result => response.send('Successfully archived!'))
-		.catch(error => response.send(error))
+		.then(result => response.send(true))
+		.catch(error => response.send(false))
 	}else{
-		return response.send(`You don't have authorization to update this.`)
+		return response.send(false)
 	}
 }
 
@@ -87,8 +87,8 @@ module.exports.getInactiveCourses = (request, response) => {
 	if(userData.isAdmin){
 		Courses.find({isActive:false})
 		.then(result => response.send(result))
-		.catch(error => response.send(error))
+		.catch(error => response.send(false))
 	} else {
-		return response.send("You don't have access to this route.")
+		return response.send(false)
 	}
 }

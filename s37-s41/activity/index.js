@@ -30,6 +30,10 @@ app.use("/users", userRoutes);
 app.use("/courses", coursesRoutes);
 
 
-app.listen(port, () => {
-	console.log(`Server is running at localhost:${port}`)
-});
+if(require.main === module){
+	app.listen(port, () => {
+		console.log(`Server is running at localhost:${port}`)
+	});
+}
+
+module.exports = {app,mongoose};
